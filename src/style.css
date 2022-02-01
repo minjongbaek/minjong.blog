@@ -332,7 +332,7 @@ a:focus {
 
 /* Custom By Minjong */
 p img {
-  width:100%;
+  width: 100%;
 }
 
 .bio .summary {
@@ -347,4 +347,32 @@ p img {
 .language-css .token.string,
 .style .token.string {
   background: unset !important;
+}
+
+@media (max-width: 1399px) {
+  .post-toc {
+    display: none;
+  }
+}
+
+.post-toc .post-toc {
+  display: block;
+  position: absolute;
+}
+
+.post-toc .toc {
+  position: fixed;
+  top: 110px;
+  right: 50px;
+  width: 290px;
+  font-size: 0.95rem;
+}
+
+.post-toc .toc ul {
+  list-style: none;
+}
+
+.toc li > ul {
+  margin-left: var(--spacing-6);
+  margin-top: calc(var(--spacing-6) / 2);
 }

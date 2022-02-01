@@ -5,6 +5,7 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Comment from "../components/utterance"
+import Toc from "../components/toc"
 
 const BlogPostTemplate = ({ data, location }) => {
   const post = data.markdownRemark
@@ -18,6 +19,9 @@ const BlogPostTemplate = ({ data, location }) => {
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
+      <div className="post-toc">
+        <Toc toc={post.tableOfContents}></Toc>
+      </div>
       <article
         className="blog-post"
         itemScope
@@ -85,6 +89,7 @@ export const pageQuery = graphql`
       id
       excerpt(pruneLength: 160)
       html
+      tableOfContents
       frontmatter {
         title
         date(formatString: "YYYY-MM-DD")
