@@ -13,6 +13,35 @@ const BlogPostTemplate = ({ data, location }) => {
   const utterancesRepo = data.site.siteMetadata?.utterancesRepo
   const { previous, next } = data
 
+  const [isToc, setIsToc] = React.useState(false)
+  const resizeTimeout = React.useRef()
+  React.useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth
+      if (width > 1390) {
+        setIsToc(true);
+      } else {
+        setIsToc(false)
+      }
+    }
+  
+    const resizeThrottler = () => {
+      if (!resizeTimeout.current) {
+        resizeTimeout.current = setTimeout(() => {
+          resizeTimeout.current = null;
+          handleResize();
+        }, 300)
+      }
+    }
+    
+    handleResize();
+    window.addEventListener('resize', resizeThrottler)
+    return () => {
+      window.removeEventListener('resize', resizeThrottler)
+      clearInterval(resizeTimeout)
+    }
+  }, [isToc])
+
   return (
     <Layout location={location} title={siteTitle}>
       <Seo
@@ -20,7 +49,7 @@ const BlogPostTemplate = ({ data, location }) => {
         description={post.frontmatter.description || post.excerpt}
       />
       <div className="post-toc">
-        <Toc toc={post.tableOfContents}></Toc>
+        {isToc && <Toc toc={post.tableOfContents}></Toc>}
       </div>
       <article
         className="blog-post"
@@ -30,6 +59,9 @@ const BlogPostTemplate = ({ data, location }) => {
         <header>
           <h1 itemProp="headline">{post.frontmatter.title}</h1>
           <p>{post.frontmatter.date}</p>
+          {post.frontmatter.tags && post.frontmatter.tags.map((tag, index) => (
+            <span className="tag-label" key={index}><a href={`#${new Date().getTime()}`}>{tag}</a></span>
+          ))}
         </header>
         <section
           dangerouslySetInnerHTML={{ __html: post.html }}
@@ -94,6 +126,7 @@ export const pageQuery = graphql`
         title
         date(formatString: "YYYY-MM-DD")
         description
+        tags
       }
     }
     previous: markdownRemark(id: { eq: $previousPostId }) {
