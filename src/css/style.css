@@ -349,30 +349,14 @@ p img {
   background: unset !important;
 }
 
-@media (max-width: 1399px) {
-  .post-toc {
-    display: none;
-  }
+header .tag-label {
+  background-color: rgb(241, 243, 245);
+  padding: 5px 10px 5px 10px;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
-.post-toc .post-toc {
-  display: block;
-  position: absolute;
-}
-
-.post-toc .toc {
-  position: fixed;
-  top: 110px;
-  right: 50px;
-  width: 290px;
-  font-size: 0.95rem;
-}
-
-.post-toc .toc ul {
-  list-style: none;
-}
-
-.toc li > ul {
-  margin-left: var(--spacing-6);
-  margin-top: calc(var(--spacing-6) / 2);
+header .tag-label:hover {
+  background-color: rgb(240, 240, 240);
+  transition: background-color 2s;
 }
