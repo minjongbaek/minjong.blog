@@ -35,3 +35,20 @@
   margin-left: var(--spacing-6);
   margin-top: calc(var(--spacing-6) / 2);
 }
+
+.post-toc .toc-wrap .toc a {
+  color: #aaa;
+  transition-duration: 0.3s;
+  text-decoration: none;
+  font-size: var(--fontSize-0);
+}
+
+.post-toc .toc-wrap .toc a.toc-active {
+  color: var(--color-text);
+  font-size: var(--fontSize-1);
+}
+
+.post-toc .toc-wrap .toc a:hover {
+  color: var(--color-text);
+  font-size: var(--fontSize-1);
+}
