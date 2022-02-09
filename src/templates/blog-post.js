@@ -60,7 +60,7 @@ const BlogPostTemplate = ({ data, location }) => {
           <h1 itemProp="headline">{post.frontmatter.title}</h1>
           <p>{post.frontmatter.date}</p>
           {post.frontmatter.tags && post.frontmatter.tags.map((tag, index) => (
-            <span className="tag-label" key={index}><a href={`#${new Date().getTime()}`}>{tag}</a></span>
+            <span className="tag-label" key={index}><a href={`/tags/${tag.toLowerCase()}`}>{tag}</a></span>
           ))}
         </header>
         <section
