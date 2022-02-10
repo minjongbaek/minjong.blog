@@ -6,6 +6,7 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Comment from "../components/utterance"
 import Toc from "../components/toc"
+import TagLabel from "../components/tag-label"
 
 const BlogPostTemplate = ({ data, location }) => {
   const post = data.markdownRemark
@@ -24,7 +25,7 @@ const BlogPostTemplate = ({ data, location }) => {
         setIsToc(false)
       }
     }
-  
+
     const resizeThrottler = () => {
       if (!resizeTimeout.current) {
         resizeTimeout.current = setTimeout(() => {
@@ -33,7 +34,7 @@ const BlogPostTemplate = ({ data, location }) => {
         }, 300)
       }
     }
-    
+
     handleResize();
     window.addEventListener('resize', resizeThrottler)
     return () => {
@@ -60,7 +61,7 @@ const BlogPostTemplate = ({ data, location }) => {
           <h1 itemProp="headline">{post.frontmatter.title}</h1>
           <p>{post.frontmatter.date}</p>
           {post.frontmatter.tags && post.frontmatter.tags.map((tag, index) => (
-            <span className="tag-label" key={index}><a href={`/tags/${tag.toLowerCase()}`}>{tag}</a></span>
+            <TagLabel key={index} tag={tag}></TagLabel>
           ))}
         </header>
         <section

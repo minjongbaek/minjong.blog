@@ -255,6 +255,15 @@ a:focus {
   margin: 0;
 }
 
+.post-list {
+  margin-bottom: var(--spacing-0);
+}
+
+.post-list:not(:last-child) {
+  border-bottom: 2px solid #ececec;
+  padding-bottom: var(--spacing-8);
+}
+
 .post-list-item {
   margin-bottom: var(--spacing-8);
   margin-top: var(--spacing-8);
@@ -262,6 +271,7 @@ a:focus {
 
 .post-list-item p {
   margin-bottom: var(--spacing-0);
+  margin-top: var(--spacing-4);
 }
 
 .post-list-item h2 {
@@ -349,14 +359,18 @@ p img {
   background: unset !important;
 }
 
-header .tag-label {
+.tag-label {
   background-color: rgb(241, 243, 245);
   padding: 5px 10px 5px 10px;
   border-radius: 10px;
   cursor: pointer;
 }
 
-header .tag-label:hover {
+.tag-label:hover {
   background-color: rgb(240, 240, 240);
   transition: background-color 2s;
+}
+
+.tag-label a {
+  text-decoration: none;
 }

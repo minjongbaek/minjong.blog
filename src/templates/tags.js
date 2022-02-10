@@ -3,35 +3,83 @@ import PropTypes from "prop-types"
 
 // Components
 import { Link, graphql } from "gatsby"
+import Layout from "../components/layout"
+import Seo from "../components/seo"
+import TagLabel from "../components/tag-label"
 
 const Tags = ({ pageContext, data }) => {
   const { tag } = pageContext
   const { edges, totalCount } = data.allMarkdownRemark
-  const tagHeader = `${totalCount} post${
-    totalCount === 1 ? "" : "s"
-  } tagged with "${tag}"`
+  const posts = edges
 
   return (
-    <div>
-      <h1>{tagHeader}</h1>
-      <ul>
-        {edges.map(({ node }) => {
-          const { slug } = node.fields
-          const { title } = node.frontmatter
+    <Layout location={pageContext} >
+      <Seo title={`Tags: ${tag}`} />
+      <h1 className="main-heading">#{tag}</h1>
+      <p>총 {totalCount}개의 포스트.</p>
+      <ol style={{ listStyle: `none` }}>
+        {posts.map(({ node }) => {
+          const post = node;
+          const title = post.frontmatter.title || post.fields.slug
+          const tags = post.frontmatter.tags
+
           return (
-            <li key={slug}>
-              <Link to={slug}>{title}</Link>
+            <li key={post.fields.slug} className="post-list">
+              <article
+                className="post-list-item"
+                itemScope
+                itemType="http://schema.org/Article"
+              >
+                <header>
+                  <h2>
+                    <Link to={post.fields.slug} itemProp="url">
+                      <span itemProp="headline">{title}</span>
+                    </Link>
+                  </h2>
+                  <small>{post.frontmatter.date}</small>
+                </header>
+                <section>
+                  <p
+                    dangerouslySetInnerHTML={{
+                      __html: post.frontmatter.description || post.excerpt,
+                    }}
+                    itemProp="description"
+                  />
+                  {tags && <p>
+                    {tags && tags.map((tag, index) => (
+                      <TagLabel key={index} tag={tag}></TagLabel>
+                    ))}
+                  </p>}
+                </section>
+              </article>
             </li>
           )
         })}
-      </ul>
-      {/*
-              This links to a page that does not yet exist.
-              You'll come back to it!
-            */}
-      <Link to="/tags">All tags</Link>
-    </div>
+      </ol>
+    </Layout >
   )
+
+  // return (
+  //   <div>
+  //     <h1>{tagHeader}</h1>
+  //     <ul>
+  //       {edges.map(({ node }) => {
+  //         const { slug } = node.fields
+  //         const { title } = node.frontmatter
+  //         return (
+  //           <li key={slug}>
+  //             <Link to={slug}>{title}</Link>
+  //           </li>
+  //         )
+  //       })}
+  //     </ul>
+  //     {/*
+  //             This links to a page that does not yet exist.
+  //             You'll come back to it!
+  //           */}
+  //     <Link to="/tags">All tags</Link>
+  //   </div>
+  // )
 }
 
 Tags.propTypes = {
@@ -73,7 +121,10 @@ export const pageQuery = graphql`
             slug
           }
           frontmatter {
+            date(formatString: "YYYY-MM-DD")
             title
+            description
+            tags
           }
         }
       }
