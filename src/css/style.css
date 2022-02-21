@@ -374,3 +374,9 @@ p img {
 .tag-label a {
   text-decoration: none;
 }
+
+div.tags-wrap h3 {
+  list-style: none;
+  margin-bottom: 0;
+  color: var(--color-primary);
+}

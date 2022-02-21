@@ -7,30 +7,50 @@ import kebabCase from "lodash/kebabCase"
 // Components
 import { Helmet } from "react-helmet"
 import { Link, graphql } from "gatsby"
+import Layout from "../components/layout"
+import Seo from "../components/seo"
+import Bio from "../components/bio"
 
 const TagsPage = ({
   data: {
     allMarkdownRemark: { group },
     site: {
       siteMetadata: { title },
-    },
-  },
-}) => (
-  <div>
-    <Helmet title={title} />
-    <div>
-      <h1>Tags</h1>
-      <ul>
-        {group.map(tag => (
-          <li key={tag.fieldValue}>
+    }
+  }, location
+}) =>
+// <div>
+//   <Helmet title={title} />
+//   <div>
+//     <h1>Tags</h1>
+//     <ul>
+//       {group.map(tag => (
+//         <li key={tag.fieldValue}>
+//           <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
+//             {tag.fieldValue} ({tag.totalCount})
+//           </Link>
+//         </li>
+//       ))}
+//     </ul>
+//   </div>
+// </div>
+(
+  <Layout location={location} title={title}>
+    <Seo title="All tags" />
+    <Bio />
+    <div className="tags-wrap">
+      {group.map(tag => (
+        <div>
+          <h3 className="tags" key={tag.fieldValue}>
             <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
-              {tag.fieldValue} ({tag.totalCount})
+              <span>#{tag.fieldValue}</span>
             </Link>
-          </li>
-        ))}
-      </ul>
+          </h3>
+          <p>총 ({tag.totalCount}) 개의 포스트.</p>
+        </div>
+      ))}
     </div>
-  </div>
+  </Layout >
 )
 
 TagsPage.propTypes = {
