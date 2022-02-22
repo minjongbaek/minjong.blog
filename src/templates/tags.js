@@ -17,7 +17,7 @@ const Tags = ({ pageContext, data, location }) => {
     <Layout location={location} title={title}>
       <Seo title={`Tags: ${tag}`} />
       <h1 className="main-heading">#{tag}</h1>
-      <p>총 {totalCount}개의 포스트</p>
+      <p>{totalCount}개의 포스트</p>
       <ol style={{ listStyle: `none` }}>
         {posts.map(({ node }) => {
           const post = node;
@@ -60,7 +60,7 @@ export const pageQuery = graphql`
     allMarkdownRemark(
       limit: 2000
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { tags: { in: [$tag] } , draft: { ne: true } } }
+      filter: { frontmatter: { tags: { in: [$tag] } } }
     ) {
       totalCount
       edges {

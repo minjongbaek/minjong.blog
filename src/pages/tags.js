@@ -46,7 +46,7 @@ const TagsPage = ({
               <span>#{tag.fieldValue}</span>
             </Link>
           </h3>
-          <p>총 ({tag.totalCount}) 개의 포스트.</p>
+          <p>{tag.totalCount} 개의 포스트</p>
         </div>
       ))}
     </div>
@@ -81,7 +81,6 @@ export const pageQuery = graphql`
       }
     }
     allMarkdownRemark(
-      filter: { frontmatter: { draft: { ne: true } } }
       limit: 2000
     ) {
       group(field: frontmatter___tags) {
