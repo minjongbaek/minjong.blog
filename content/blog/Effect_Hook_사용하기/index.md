@@ -1,7 +1,7 @@
 ---
 title: Effect Hook 사용하기
 date: "2022-01-30"
-description: "REffect Hook을 사용하면 함수 컴포넌트에서 side effect를 수행할 수 있다."
+description: "Effect Hook을 사용하면 함수 컴포넌트에서 side effect를 수행할 수 있다."
 tags: ["React"]
 ---
 
