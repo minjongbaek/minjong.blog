@@ -39,18 +39,18 @@ const Toc = ({ toc }) => {
       }
     };
 
-    const resizeThrottler = () => {
-      if (!resizeTimeout.current) {
-        resizeTimeout.current = setTimeout(() => {
-          resizeTimeout.current = null;
-          handleScroll();
-        }, 100)
-      }
-    }
+    // const resizeThrottler = () => {
+    //   if (!resizeTimeout.current) {
+    //     resizeTimeout.current = setTimeout(() => {
+    //       resizeTimeout.current = null;
+    //       handleScroll();
+    //     }, 100)
+    //   }
+    // }
 
-    window.addEventListener('scroll', resizeThrottler);
+    window.addEventListener('scroll', handleScroll);
     return () => {
-      window.removeEventListener('scroll', resizeThrottler); //clean up
+      window.removeEventListener('scroll', handleScroll); //clean up
     };
   }, []);
 
