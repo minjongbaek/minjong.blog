@@ -51,4 +51,4 @@ export default TestComponent;
 
 버튼을 누르면 `setCount` 함수를 호출하여 현재 `count` 변수의 값에 1을 더해 갱신하고 React는 새로운 count 변수를 `TestComponent`에 전달 후 리렌더링한다.
 
-![](Screen-Recording.gif)
+![](/images/State_Hook_사용하기/Screen-Recording.gif)

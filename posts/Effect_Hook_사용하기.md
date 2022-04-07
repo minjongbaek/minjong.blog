@@ -101,7 +101,7 @@ export default TestComponent
 
 위 코드는 effect를 정리해주지 않았기 때문에 컴포넌트가 언마운트 되어도 아래 결과처럼 `setInterval`의 콜백함수가 지속적으로 호출된다.
 
-![](Screen-Recording-1.gif)
+![](/images/Effect_Hook_사용하기/Screen-Recording-1.gif)
 
 effect를 정리하기 위해서는 effect가 정리될 수 있는 함수를 반환하면 된다. React는 effect가 함수를 반환하면 그 함수를 기억하고 있다가 컴포넌트가 언마운트 될 때 실행시킨다.
 
@@ -138,7 +138,7 @@ const TestComponent = ({ users, onRemove }) => {
 export default TestComponent
 ```
 
-![](Screen-Recording-2.gif)
+![](/images/Effect_Hook_사용하기/Screen-Recording-2.gif)
 
 ## 최적화
 
