@@ -380,3 +380,7 @@ div.tags-wrap h3 {
   margin-bottom: 0;
   color: var(--color-primary);
 }
+
+html {
+  scroll-behavior: smooth;
+}
