@@ -1,11 +1,29 @@
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
+@font-face {
+  font-family: "Nanum Gothic";
+  src: url("/fonts/NanumGothic-Regular.ttf") format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Nanum Gothic";
+  src: url("/fonts/NanumGothic-Bold.ttf") format("truetype");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Nanum Gothic";
+  src: url("/fonts/NanumGothic-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+}
 
 
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: 'Nanum Gothic', sans-serif;
+  font-family: Nanum Gothic;
+  line-height: 1.5;
+  font-weight: 400;
 }
 
 * {

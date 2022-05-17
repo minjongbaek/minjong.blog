@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import styles from './layout.module.css'
+import styles from '../styles/layout.module.css'
 
 const name = '백민종'
 export const siteTitle = '민종로그'
@@ -29,17 +29,21 @@ const Layout = ({ children, home }) => {
           width={100}
           alt={name}
         />
-        <p className={styles.profileSumary}>
-          <strong>{name}</strong> <br />
-          2년차 주니어 개발자입니다.<br />
-          프론트 엔드 기술에 관심이 많습니다.
-        </p>
+        <div>
+          <p className={styles.profileName}>
+            {name}
+          </p>
+          <p className={styles.profileSumary}>
+            2년차 주니어 개발자입니다.<br />
+            프론트 엔드 기술에 관심이 많습니다.
+          </p>
+        </div>
       </header>
       <main>{children}</main>
       {!home && (
         <div className={styles.backToHome}>
           <Link href="/">
-            <a>← Back to home</a>
+            <a>홈으로 돌아가기</a>
           </Link>
         </div>
       )}

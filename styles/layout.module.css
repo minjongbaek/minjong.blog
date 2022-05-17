@@ -7,8 +7,6 @@
 .header {
   display: flex;
   align-items: center;
-  font-size: 0.85rem;
-  line-height: 1.5rem;
 }
 
 .profileImage {
@@ -17,7 +15,14 @@
   margin-right: 1rem;
 }
 
+.profileName {
+  margin: 1rem 0 0 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
 .profileSumary {
+  margin: 0 0 1rem 1rem;
   margin-left: 1rem;
 }
 
