@@ -342,7 +342,9 @@ a:focus {
 
 /* Custom By Minjong */
 p img {
-  width: 100%;
+  max-width: 100%;
+  display: block;
+  margin: 0 auto;
 }
 
 .bio .summary {
